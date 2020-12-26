@@ -39,10 +39,7 @@ jobs:
       - name: Build with Trunk
         run: |
           set -x
-          cargo build
-          cd ./static
           trunk build --release
-          cd ..
           find ./dist
 
       - name: Deploy to Firebase
@@ -54,3 +51,5 @@ jobs:
           projectId: nirvana-dev-12345
           channelId: live
           targets: examples
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
