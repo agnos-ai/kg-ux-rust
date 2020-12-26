@@ -39,7 +39,11 @@ jobs:
       - name: Build with Trunk
         run: |
           set -x
-          trunk build --release --dist "./dist" --public-url "$PUBLIC_URL_PREFIX/"
+          cargo build
+          cd ./static
+          trunk build --release
+          cd ..
+          find ./dist
 
       - name: Deploy to Firebase
         uses: siku2/action-hosting-deploy@v0

@@ -1,0 +1,15 @@
+= How to - Run it locally
+
+== Install
+
+----
+rustup target add wasm32-unknown-unknown --toolchain nightly
+cargo install miniserve trunk wasm-bindgen-cli
+----
+
+== Run
+
+----
+trunk build
+miniserve --port 8888 --index index.html ./dist
+----

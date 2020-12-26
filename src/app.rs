@@ -4,8 +4,6 @@ use super::list::List;
 use super::{Hovered, WeakComponentLink};
 use yew::prelude::*;
 
-#![recursion_limit="256"]
-
 pub enum Msg {
     Hover(Hovered),
 }
