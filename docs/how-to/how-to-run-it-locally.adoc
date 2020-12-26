@@ -2,14 +2,39 @@
 
 == Install
 
+First install some tools
+
 ----
 rustup target add wasm32-unknown-unknown --toolchain nightly
 cargo install miniserve trunk wasm-bindgen-cli
 ----
 
-== Run
+== Build
+
+Build everything with the `trunk` tool
 
 ----
 trunk build
+----
+
+== Run
+
+Host the app locally on port 8888 (or any other port)
+
+----
 miniserve --port 8888 --index index.html ./dist
 ----
+
+== Deploy
+
+Deploy to firebase from your local command line
+
+----
+firebase deploy
+----
+
+The version on the main branch is deployed at these URLs:
+
+- https://nirvana.agnos.ai/
+- https://nirvana-dev-12345.web.app/
+

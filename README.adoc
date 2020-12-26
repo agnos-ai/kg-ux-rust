@@ -1,0 +1,10 @@
+= KG/UX
+
+A hobby project to learn the Rust programming language.
+
+Currently trying out `yew`, which is sort of like a React framework in Rust.
+
+== Links
+
+- link:./docs/adrs/README.adoc[Architecture Decision Records]
+- link:./docs/how-to/how-to-run-it-locally.adoc[How to run it locally?]
