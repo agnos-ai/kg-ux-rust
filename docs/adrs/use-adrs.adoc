@@ -1,0 +1,30 @@
+= Use ADRs
+
+== Status
+
+- [ ] Proposed
+- [x] Accepted
+- [ ] Rejected
+- [ ] Deprecated
+- [ ] Superseded
+
+== Context
+
+We need a way to record technical decisions made during development so that, 
+in the future, people can find out why a decisions was made. 
+This needs to be structured, lightweight and easy to find.
+
+== Decision
+
+Use ADRs and use this 
+link:https://github.com/joelparkerhenderson/architecture_decision_record/blob/master/adr_template_by_michael_nygard.md[Michael Nygard's template], 
+a copy of which is link:adr-template.adoc[here].
+
+== Consequences
+
+Future software developers and technical architects working on this codebase can
+find out the reasons why someone made a particular decision, its context and 
+consequences.
+
+ADRs must be part of the delivery team's Definition of Done.
+

@@ -1,0 +1,67 @@
+= Code Testing Approach
+
+== Status
+
+- [ ] Proposed
+- [x] Accepted
+- [ ] Rejected
+- [ ] Deprecated
+- [ ] Superseded
+
+== Context
+
+The scope of this ADR is code tests.
+
+== Decision
+
+Write the following types of tests for all code in this repo.
+The developer can run them on their local machine and they
+will run in CI on every code push on main and feature branches.
+
+=== 1. Black box tests
+
+Create at least one black box test for each user story.
+The scope of the black box test should be the module.
+"Black box" means the tests do not need to know about the
+internal wiring of the module, so test at the boundaries,
+like an HTTP endpoint.
+These tests should be fast and can be executed in CI before
+building the app or Docker image.
+To make them run fast, use in-memory mock services.
+
+Prefer these types of test over types 2 and 3 below.
+Black box tests enable us to switch out the implementation
+without changing the tests.
+The tests give us confidence the module is still functional.
+These tests are agnostic of the language used to write the module.
+
+=== 2. Unit tests
+
+Unit test individual functions where appropriate.
+These are fast and executed in CI before building the app.
+Keep these type of "white box" tests to a minimum as they are brittle. 
+Prefer black box tests and write the modules in a way that make testable.
+
+=== 3. Smoke tests
+
+Smoke test a set of modules in a deployed environment. 
+
+A few sample pipelines that execute every step end-to-end
+should be sufficient.
+Smoke tests are typically slow to run and brittle,
+but give confidence that modules wire up correctly.
+An alternative to these tests are metrics gathered on the
+live system as this is often the best/only place to
+answer the question "is it wired up correctly?"
+
+If any these tests do not pass during build,
+the branch cannot be merged.
+
+== Consequences
+
+This set of tests should give us:
+
+* Fast feedback when developing new features by running
+  tests in categories 1 and 2
+* Confidence that a regression has not been created by
+  changing an existing pipeline

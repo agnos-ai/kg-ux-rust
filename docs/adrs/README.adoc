@@ -1,0 +1,14 @@
+= Architectural Decision Records (adrs)
+
+include::intro.adoc[leveloffset=+1]
+
+== Records
+
+* link:./intro.adoc[section-intro]
+* link:./use-adrs.adoc[use-adrs]
+* link:./code-testing-approach.adoc[code-testing-approach]
+* link:./wasm-pack-vs-wasm-bindgen.adoc[wasm-pack-vs-wasm-bindgen]
+
+== Links
+
+* link:../README.adoc[Table of Contents]

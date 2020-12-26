@@ -1,0 +1,34 @@
+= wasm-pack vs wasm-bindgen
+
+== Status
+
+- [x] Proposed
+- [ ] Accepted
+- [ ] Rejected
+- [ ] Deprecated
+- [ ] Superseded
+
+== Context
+
+We need a utility that generates the right boilerplate to embed our
+Rust app as a WASM binary in a webpage.
+
+There are two main utilities for that:
+
+1. wasm-pack
+2. wasm-bindgen
+
+Even though wasm-pack is recommended by the Rust team, it turns out
+that it is more geared towards publishing a rust component as an npm package
+whereas wasm-bindgen focuses on hosting a full app.
+(According to the author of trunk: https://github.com/thedodd/trunk)
+
+== Decision
+
+Use `wasm-bindgen`
+
+== Consequences
+
+- The yew framework recommends `warm-pack` but still supports `wasm-bindgen`
+- The `trunk` utility is based on `wasm-bindgen` so we can use that only
+  if we stick to `wasm-bindgen`

@@ -1,0 +1,13 @@
+= Architectural Decision Records (adrs)
+:sectnums:
+:toc:
+:toclevels: 1
+
+include::./intro.adoc
+
+include::./use-adrs.adoc
+
+include::./code-testing-approach.adoc
+
+include::./wasm-pack-vs-wasm-bindgen.adoc
+
