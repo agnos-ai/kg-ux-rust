@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dpp.iml" filepath="$PROJECT_DIR$/dpp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kg-ux-rust.iml" filepath="$PROJECT_DIR$/kg-ux-rust.iml" />
     </modules>
   </component>
 </project>

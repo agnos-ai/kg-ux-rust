@@ -81,14 +81,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "dpp"
-version = "0.1.0"
-dependencies = [
- "wasm-bindgen",
- "yew",
-]
-
-[[package]]
 name = "fnv"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -283,6 +275,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf3d7383929f7c9c7c2d0fa596f325832df98c3704f2c60553080f7127a58175"
 dependencies = [
  "wasm-bindgen",
+]
+
+[[package]]
+name = "kg-ux-rust"
+version = "0.1.0"
+dependencies = [
+ "wasm-bindgen",
+ "yew",
 ]
 
 [[package]]
