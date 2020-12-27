@@ -1,4 +1,5 @@
-#![recursion_limit="1024"]
+#![recursion_limit = "1024"]
+
 mod app;
 mod header;
 mod item;
