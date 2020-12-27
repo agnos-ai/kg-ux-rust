@@ -3,6 +3,8 @@ use super::item::ListItem;
 use super::list::List;
 use super::{Hovered, WeakComponentLink};
 use yew::prelude::*;
+// use yew_material::MatButton;
+// use yew::html;
 
 pub enum Msg {
     Hover(Hovered),
@@ -28,10 +30,6 @@ impl Component for App {
         }
     }
 
-    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        false
-    }
-
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg {
             Msg::Hover(hovered) => {
@@ -39,6 +37,10 @@ impl Component for App {
                 true
             }
         }
+    }
+
+    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
+        false
     }
 
     fn view(&self) -> Html {
@@ -54,6 +56,7 @@ impl Component for App {
         html! {
             <div class="main" onmouseenter=onmouseenter>
                 <h1>{ "Nested List Demo" }</h1>
+                // <MatButton label="Click me!" />
                 <List on_hover=on_hover weak_link=list_link>
                     <ListHeader text="Calling all Rusties!" on_hover=on_hover list_link=list_link />
                     <ListItem name="Rustin" on_hover=on_hover />
