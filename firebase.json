@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "nirvana-dev-12345",
     "public": "dist",
     "ignore": [
       "firebase.json",
