@@ -1,7 +1,8 @@
 name: Lint
 on:
   push:
-    branches: [master]
+    branches:
+      - '**'
 
 jobs:
   lint:
@@ -37,4 +38,3 @@ jobs:
           command: clippy
           toolchain: nightly
           args: --all-features -- -D warnings
-          
