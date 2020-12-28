@@ -1,0 +1,4 @@
+= How-to's
+
+* link:./how-to-interoperate-with-javascript.adoc[how-to-interoperate-with-javascript]
+* link:./how-to-run-it-locally.adoc[how-to-run-it-locally]
