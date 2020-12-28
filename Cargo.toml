@@ -10,7 +10,9 @@ edition = "2018"
 [dependencies]
 yew = "^0"
 log = "^0"
+web-sys = "^0.3"
 wasm-logger = "^0"
 wasm-bindgen = "^0"
 wasm-bindgen-futures = "^0"
 #yew-material = { git = "https://github.com/hamza1311/yew-material/", branch = "master", features = ["full"] }
+ybc = "0.1.6"

@@ -25,6 +25,9 @@ Host the app locally on port 8888 (or any other port)
 firebase serve
 ----
 
+You could also use `trunk serve` or other web servers but the advantage of using firebase to serve it locally is that
+firebase then also ensures that the firebase imports (used for Firebase Authentication) work as well.
+
 == Deploy
 
 Deploy to firebase from your local command line
