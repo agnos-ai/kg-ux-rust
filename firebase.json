@@ -1,7 +1,6 @@
 {
   "hosting": {
     "target": "nirvana-dev-12345",
-    "site": "nirvana-dev-12345",
     "public": "dist",
     "ignore": [
       "firebase.json",
