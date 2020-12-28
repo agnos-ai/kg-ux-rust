@@ -1,6 +1,7 @@
 /target
 /dist
 .firebase/
+firebase-debug.log
 
 
 

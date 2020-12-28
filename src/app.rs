@@ -55,6 +55,8 @@ impl Component for App {
 
         html! {
             <div class="main" onmouseenter=onmouseenter>
+                <div id="firebaseui-auth-container"></div>
+                <div id="loader">{ "Loading..." }</div>
                 <h1>{ "Nested List Demo" }</h1>
                 // <MatButton label="Click me!" />
                 <List on_hover=on_hover weak_link=list_link>

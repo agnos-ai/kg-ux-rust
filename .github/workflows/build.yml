@@ -60,6 +60,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: siku2/action-hosting-deploy@v0
         with:
+          targets: ${{ secrets.FIREBASE_PROJECT_ID }}
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NIRVANA_DEV_12345 }}'
           channelId: live
@@ -68,6 +69,7 @@ jobs:
         if: github.ref != 'refs/heads/main'
         uses: siku2/action-hosting-deploy@v0
         with:
+          targets: ${{ secrets.FIREBASE_PROJECT_ID }}
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NIRVANA_DEV_12345 }}'
           expires: 7d
