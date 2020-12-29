@@ -11,3 +11,4 @@ include::./code-testing-approach.adoc
 
 include::./wasm-pack-vs-wasm-bindgen.adoc
 
+include::./not-using-thedodd-trunk.adoc

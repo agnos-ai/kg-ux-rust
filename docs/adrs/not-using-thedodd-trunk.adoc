@@ -1,0 +1,31 @@
+= Do not use thedodd/trunk for builds
+
+== Status
+
+- [ ] Proposed
+- [x] Accepted
+- [ ] Rejected
+- [ ] Deprecated
+- [ ] Superseded
+
+== Context
+
+The build tool https://github.com/thedodd/trunk looks good and promising, ensures for a fast and lean and mean
+distribution but is too limited:
+
+- Does not load all the "bindgen" rust exports from the wasm.js file into Javascript space
+-- uses 'import init from /index-<hash>.js' which only calls the default export function, not all the others
+- Does not really work well together with npm modules (seems that this feature is coming though)
+
+== Decision
+
+Using the build approach as documented in the following repo:
+
+- https://github.com/yewstack/yew-wasm-pack-template
+
+== Consequences
+
+- Slightly more complicated boilerplate and build process.
+- Has the advantage of being able to combine the wasm-app with any other npm module.
+- Has the advantage of being able to fully work with webpack.
+

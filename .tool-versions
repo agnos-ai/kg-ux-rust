@@ -1,1 +1,2 @@
 # do not use asdf for rust, use rustup, otherwise trouble in IntelliJ
+python 3.8.6

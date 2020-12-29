@@ -1,6 +1,6 @@
 = Architectural Decision Records (adrs)
 
-include::intro.adoc[leveloffset=+1]
+include::intro.adoc
 
 == Records
 
@@ -8,6 +8,7 @@ include::intro.adoc[leveloffset=+1]
 * link:./use-adrs.adoc[use-adrs]
 * link:./code-testing-approach.adoc[code-testing-approach]
 * link:./wasm-pack-vs-wasm-bindgen.adoc[wasm-pack-vs-wasm-bindgen]
+* link:./not-using-thedodd-trunk.adoc[not-using-thedodd-trunk]
 
 == Links
 

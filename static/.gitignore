@@ -1,7 +1,6 @@
 *
 !.gitignore
 !index.html
-!styles.scss
-!favicon.png
-!firebase_authentication_logic.js
-!package.json
+!css/
+!image/
+!js/

@@ -9,7 +9,7 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "!/@(js|css|image)/**",
         "destination": "/index.html"
       }
     ]

@@ -5,7 +5,7 @@ use super::{Hovered, WeakComponentLink};
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
 use web_sys::console;
-use ybc::TileCtx::{Ancestor, Child, Parent};
+// use ybc::TileCtx::{Ancestor, Child, Parent};
 
 #[wasm_bindgen]
 extern {
@@ -17,6 +17,10 @@ pub fn greet(name: &str) {
     console::log_1(&"From Rust: Hello using web-sys".into());
     alert(&format!("Hello, {}!", name));
 }
+
+// // import a JS function called `foo` from the module `mod`
+// #[link(wasm_import_module = "mod")]
+// extern { fn foo(); }
 
 pub enum Msg {
     Hover(Hovered),

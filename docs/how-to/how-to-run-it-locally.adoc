@@ -6,15 +6,15 @@ First install some tools
 
 ----
 rustup target add wasm32-unknown-unknown --toolchain nightly
-cargo install trunk wasm-bindgen-cli
+cargo install wasm-bindgen-cli
 ----
 
 == Build
 
-Build everything with the `trunk` tool
+Build everything with the `yarn` tool
 
 ----
-trunk build
+yarn build
 ----
 
 == Run
@@ -23,6 +23,12 @@ Host the app locally on port 8888 (or any other port)
 
 ----
 firebase serve
+----
+
+Easier to combine the two:
+
+----
+yarn build && firebase serve
 ----
 
 You could also use `trunk serve` or other web servers but the advantage of using firebase to serve it locally is that

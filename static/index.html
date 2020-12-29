@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Nirvana KG/UX</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
     <meta charset="utf-8">
     <!--  Bulma -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-    <link data-trunk rel="scss" href="styles.scss" />
     <!--  Firebase -->
     <script src="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet">
     <!-- Other -->
-    <link data-trunk rel="icon" href="favicon.png" />
-    <link data-trunk rel="copy-file" href="firebase_authentication_logic.js"/>
-    <base data-trunk-public-url/>
+    <link rel="icon" href="image/favicon.png" />
   </head>
   <body>
-    <link data-trunk rel="rust" href=".." data-bin="kg-ux-rust" />
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="/__/firebase/8.2.1/firebase-app.js"></script>
 
@@ -28,11 +24,5 @@
 
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <script type="module">
-      import init from '/index.js';
-      import init_firebase from '/firebase_authentication_logic.js';
-      init_firebase();
-    </script>
   </body>
 </html>
