@@ -97,7 +97,7 @@ module.exports = (env, argv) => {
       //
       new WasmPackPlugin({
         crateDirectory: ".",
-        outDir: path.join(__dirname, './dist/js'),
+        outDir: './dist/js',
         outName: "kg_ux_wasm",
         watchDirectories: [
           path.resolve(__dirname, "./src")

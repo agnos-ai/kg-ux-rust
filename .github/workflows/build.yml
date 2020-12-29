@@ -71,7 +71,7 @@ jobs:
           yarn --version
           curl -o- -L https://yarnpkg.com/install.sh | bash
           yarn config set cache-folder ./yarn_cache
-          yarn install --frozen-lockfile --non-interactive
+          yarn install --frozen-lockfile --non-interactive --no-progress
 
       - name: Build
         run: yarn run build
