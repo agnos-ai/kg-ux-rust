@@ -5,25 +5,6 @@ use yew::prelude::*;
 
 use super::{header::ListHeader, item::ListItem, list::List, Hovered, WeakComponentLink};
 
-// use ybc::TileCtx::{Ancestor, Child, Parent};
-
-#[wasm_bindgen]
-
-extern "C" {
-
-    pub fn alert(s:&str,);
-
-}
-
-#[wasm_bindgen]
-
-pub fn greet(name:&str,) {
-
-    console::log_1(&"From Rust: Hello using web-sys".into(),);
-
-    alert(&format!("Hello, {}!", name),);
-}
-
 // // import a JS function called `foo` from the module `mod`
 // #[link(wasm_import_module = "mod")]
 // extern { fn foo(); }
