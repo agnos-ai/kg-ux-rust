@@ -5,52 +5,76 @@ on:
       - '**'
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     env:
       # leave empty for /
       PUBLIC_URL_PREFIX: ""
-
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        node_version:
+          - 15
+        architecture:
+          - x64
+    name: Build ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repo
+        uses: actions/checkout@v2
 
-      - uses: actions-rs/toolchain@v1
+      - name: Setup Node
+          uses: actions/setup-node@v2
+          with:
+            node-version: ${{ matrix.node_version }}
+            architecture: ${{ matrix.architecture }}
+
+      - name: Setup Cargo
+        uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           target: wasm32-unknown-unknown
           override: true
           profile: minimal
 
-      - uses: actions/cache@v2
-        id: rust-cache
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: cargo-${{ runner.os }}-${{ hashFiles('**/Cargo.toml') }}
-          restore-keys: |
-            cargo-${{ runner.os }}-
+      - name: Restore Cargo Cache
+        uses: Swatinem/rust-cache@v1
 
-      - uses: actions/cache@v2
+#      - name: Restore Cargo Cache
+#        uses: actions/cache@v2
+#        id: cargo-cache
+#        with:
+#          path: |
+#            ~/.cargo/registry
+#            ~/.cargo/git
+#            ./target
+#          key: cargo-${{ runner.os }}-${{ hashFiles('**/Cargo.toml') }}
+#          restore-keys: |
+#            cargo-${{ runner.os }}-
+
+      - name: Restore Yarn Cache
+        uses: actions/cache@v2
         id: yarn-cache
         with:
-          path: '**/node_modules'
+          path: |
+            ./yarn_cache
+            ./node_modules
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install Rust Tools
+      - name: Install Rust Dependencies & Tools
         run: |
           cargo install wasm-bindgen-cli
 
       - name: Install Yarn and dependencies
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install # will run `yarn install` command
+        run: |
+          set +x
+          yarn --version
+          curl -o- -L https://yarnpkg.com/install.sh | bash
+          yarn config set cache-folder ./yarn_cache
+          yarn install --frozen-lockfile --non-interactive
 
       - name: Build
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build # will run `yarn build` command
+        run: yarn run build
 
       - name: Deploy to Firebase - https://nirvana.agnos.ai
         if: github.ref == 'refs/heads/main'
