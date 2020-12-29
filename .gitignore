@@ -1,4 +1,5 @@
-/target
+/target/
+/dist/
 .firebase/
 firebase-debug.log
 **/*.rs.bk
