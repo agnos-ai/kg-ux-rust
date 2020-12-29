@@ -1,0 +1,8 @@
+#
+# The dist directory has to exist prior to "yarn build" because
+# for some reason the WasmPackPlugin kicks in before the FileManagerPlugin
+# has the chance to create the ./dist directory and crashes when it can't
+# find the ./dist/js directory.
+#
+*
+!.gitignore
