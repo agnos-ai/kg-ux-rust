@@ -8,7 +8,7 @@ use web_sys::console;
 // use ybc::TileCtx::{Ancestor, Child, Parent};
 
 #[wasm_bindgen]
-extern {
+extern "C" {
     pub fn alert(s: &str);
 }
 
