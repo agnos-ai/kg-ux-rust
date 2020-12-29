@@ -1,5 +1,5 @@
 // Copyright (c) 2020 agnos.ai UI Limited.
-use wasm_bindgen::prelude::*;
+// use wasm_bindgen::prelude::*;
 use web_sys::console;
 use yew::prelude::*;
 
