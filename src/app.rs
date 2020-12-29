@@ -1,21 +1,27 @@
-use super::header::ListHeader;
-use super::item::ListItem;
-use super::list::List;
-use super::{Hovered, WeakComponentLink};
+// Copyright (c) 2020 agnos.ai UI Limited.
 use wasm_bindgen::prelude::*;
-use yew::prelude::*;
 use web_sys::console;
+use yew::prelude::*;
+
+use super::{header::ListHeader, item::ListItem, list::List, Hovered, WeakComponentLink};
+
 // use ybc::TileCtx::{Ancestor, Child, Parent};
 
 #[wasm_bindgen]
+
 extern "C" {
-    pub fn alert(s: &str);
+
+    pub fn alert(s:&str,);
+
 }
 
 #[wasm_bindgen]
-pub fn greet(name: &str) {
-    console::log_1(&"From Rust: Hello using web-sys".into());
-    alert(&format!("Hello, {}!", name));
+
+pub fn greet(name:&str,) {
+
+    console::log_1(&"From Rust: Hello using web-sys".into(),);
+
+    alert(&format!("Hello, {}!", name),);
 }
 
 // // import a JS function called `foo` from the module `mod`
@@ -23,54 +29,61 @@ pub fn greet(name: &str) {
 // extern { fn foo(); }
 
 pub enum Msg {
-    Hover(Hovered),
+    Hover(Hovered,),
 }
 
 pub struct App {
-    link: ComponentLink<Self>,
-    hovered: Hovered,
-    list_link: WeakComponentLink<List>,
-    sub_list_link: WeakComponentLink<List>,
+    link:         ComponentLink<Self,>,
+    hovered:      Hovered,
+    list_link:    WeakComponentLink<List,>,
+    sub_list_link:WeakComponentLink<List,>,
 }
 
 impl Component for App {
     type Message = Msg;
     type Properties = ();
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        console::log_1(&"From Rust: Component for App create()".into());
+    fn create(_props:Self::Properties, link:ComponentLink<Self,>,) -> Self {
+
+        console::log_1(&"From Rust: Component for App create()".into(),);
+
         Self {
             link,
-            hovered: Hovered::None,
-            list_link: WeakComponentLink::default(),
-            sub_list_link: WeakComponentLink::default(),
+            hovered:Hovered::None,
+            list_link:WeakComponentLink::default(),
+            sub_list_link:WeakComponentLink::default(),
         }
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, msg:Self::Message,) -> ShouldRender {
+
         match msg {
-            Msg::Hover(hovered) => {
+            Msg::Hover(hovered,) => {
+
                 self.hovered = hovered;
+
                 true
-            }
+            },
         }
     }
 
-    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
-        false
-    }
+    fn change(&mut self, _props:Self::Properties,) -> ShouldRender { false }
 
-    fn view(&self) -> Html {
-        let on_hover = &self.link.callback(Msg::Hover);
-        let onmouseenter = &self.link.callback(|_| Msg::Hover(Hovered::None));
+    fn view(&self,) -> Html {
+
+        let on_hover = &self.link.callback(Msg::Hover,);
+
+        let onmouseenter = &self.link.callback(|_| Msg::Hover(Hovered::None,),);
+
         let list_link = &self.list_link;
+
         let sub_list_link = &self.sub_list_link;
 
         // note the use of `html_nested!` instead of `html!`.
-        let letters = ('A'..='C')
-            .map(|letter| html_nested! { <ListItem name=letter.to_string() on_hover=on_hover /> });
+        let letters = ('A' ..= 'C')
+            .map(|letter| html_nested! { <ListItem name=letter.to_string() on_hover=on_hover /> },);
 
-        console::log_1(&"From Rust: Component for App view()".into());
+        console::log_1(&"From Rust: Component for App view()".into(),);
 
         html! {
             <>
@@ -141,7 +154,8 @@ impl Component for App {
 }
 
 impl App {
-    fn view_last_hovered(&self) -> Html {
+    fn view_last_hovered(&self,) -> Html {
+
         html! {
             <div class="last-hovered">
                 { "Last hovered:"}

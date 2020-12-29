@@ -1,0 +1,29 @@
+[tasks.format]
+install_crate = { crate_name = "rustfmt-nightly", rustup_component_name = "rustfmt-preview", binary = "rustfmt", test_arg = "--help" }
+command = "cargo"
+args = ["+nightly", "fmt", "--", "--emit=files", "--unstable-features"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean"]
+
+[tasks.build]
+command = "cargo"
+args = ["build"]
+dependencies = ["format"]
+
+[tasks.test]
+command = "cargo"
+args = ["test"]
+dependencies = ["clean"]
+
+[tasks.my-flow]
+dependencies = [
+    "format",
+    "build",
+    "test"
+]
+
+[tasks.install-rustfmt]
+install_crate = { rustup_component_name = "rustfmt-nightly", binary = "rustfmt", test_arg = ["rustfmt", "--version"], min_version = "1.4.30" }
+

@@ -4,7 +4,6 @@
 //
 const path = require('path');
 const WasmPackPlugin = require('@wasm-tool/wasm-pack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -93,16 +92,6 @@ module.exports = (env, argv) => {
           },
         },
       }),
-      //
-      // See https://www.npmjs.com/package/copy-webpack-plugin
-      //
-//      new CopyWebpackPlugin({
-//        patterns: [
-//          { from: './static/js', to: path.join(__dirname, './dist/js/') },
-//          { from: './static/css', to: path.join(__dirname, './dist/css/') },
-//          { from: './static/image', to: path.join(__dirname, './dist/image/') },
-//        ],
-//      }),
       //
       // See https://github.com/wasm-tool/wasm-pack-plugin
       //

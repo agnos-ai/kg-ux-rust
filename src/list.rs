@@ -1,52 +1,61 @@
-use crate::header::{ListHeader, Props as HeaderProps};
-use crate::item::{ListItem, Props as ItemProps};
-use crate::{Hovered, WeakComponentLink};
-use yew::html::{ChildrenRenderer, NodeRef};
-use yew::prelude::*;
-use yew::virtual_dom::{VChild, VComp};
+// Copyright (c) 2020 agnos.ai UI Limited.
+use yew::{
+    html::{ChildrenRenderer, NodeRef},
+    prelude::*,
+    virtual_dom::{VChild, VComp},
+};
 
-#[derive(Clone, PartialEq)]
+use crate::{
+    header::{ListHeader, Props as HeaderProps},
+    item::{ListItem, Props as ItemProps},
+    Hovered,
+    WeakComponentLink,
+};
+
+#[derive(Clone, PartialEq,)]
+
 pub enum Variants {
-    Item(<ListItem as Component>::Properties),
-    Header(<ListHeader as Component>::Properties),
+    Item(<ListItem as Component>::Properties,),
+    Header(<ListHeader as Component>::Properties,),
 }
 
-impl From<ItemProps> for Variants {
-    fn from(props: ItemProps) -> Self {
-        Variants::Item(props)
-    }
+impl From<ItemProps,> for Variants {
+    fn from(props:ItemProps,) -> Self { Variants::Item(props,) }
 }
 
-impl From<HeaderProps> for Variants {
-    fn from(props: HeaderProps) -> Self {
-        Variants::Header(props)
-    }
+impl From<HeaderProps,> for Variants {
+    fn from(props:HeaderProps,) -> Self { Variants::Header(props,) }
 }
 
-#[derive(PartialEq, Clone)]
+#[derive(PartialEq, Clone,)]
+
 pub struct ListVariant {
-    props: Variants,
+    props:Variants,
 }
 
-impl<CHILD> From<VChild<CHILD>> for ListVariant
+impl<CHILD,> From<VChild<CHILD,>,> for ListVariant
 where
     CHILD: Component,
-    CHILD::Properties: Into<Variants>,
+    CHILD::Properties: Into<Variants,>,
 {
-    fn from(vchild: VChild<CHILD>) -> Self {
+    fn from(vchild:VChild<CHILD,>,) -> Self {
+
         Self {
-            props: vchild.props.into(),
+            props:vchild.props.into(),
         }
     }
 }
 
-impl Into<Html> for ListVariant {
-    fn into(self) -> Html {
+impl Into<Html,> for ListVariant {
+    fn into(self,) -> Html {
+
         match self.props {
-            Variants::Header(props) => {
-                VComp::new::<ListHeader>(props, NodeRef::default(), None).into()
-            }
-            Variants::Item(props) => VComp::new::<ListItem>(props, NodeRef::default(), None).into(),
+            Variants::Header(props,) => {
+                VComp::new::<ListHeader,>(props, NodeRef::default(), None,).into()
+            },
+            Variants::Item(props,) => {
+                VComp::new::<ListItem,>(props, NodeRef::default(), None,).into()
+            },
         }
     }
 }
@@ -55,52 +64,66 @@ pub enum Msg {
     HeaderClick,
 }
 
-#[derive(Clone, PartialEq, Properties)]
+#[derive(Clone, PartialEq, Properties,)]
+
 pub struct Props {
-    pub children: ChildrenRenderer<ListVariant>,
-    pub on_hover: Callback<Hovered>,
-    pub weak_link: WeakComponentLink<List>,
+    pub children: ChildrenRenderer<ListVariant,>,
+    pub on_hover: Callback<Hovered,>,
+    pub weak_link:WeakComponentLink<List,>,
 }
 
 pub struct List {
-    props: Props,
-    inactive: bool,
+    props:   Props,
+    inactive:bool,
 }
 
 impl Component for List {
     type Message = Msg;
     type Properties = Props;
 
-    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        props.weak_link.borrow_mut().replace(link);
+    fn create(props:Self::Properties, link:ComponentLink<Self,>,) -> Self {
+
+        props.weak_link.borrow_mut().replace(link,);
+
         Self {
             props,
-            inactive: false,
+            inactive:false,
         }
     }
 
-    fn change(&mut self, props: Self::Properties) -> ShouldRender {
+    fn change(&mut self, props:Self::Properties,) -> ShouldRender {
+
         if self.props != props {
+
             self.props = props;
+
             true
         } else {
+
             false
         }
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, msg:Self::Message,) -> ShouldRender {
+
         match msg {
             Msg::HeaderClick => {
+
                 self.inactive = !self.inactive;
+
                 true
-            }
+            },
         }
     }
 
-    fn view(&self) -> Html {
+    fn view(&self,) -> Html {
+
         let inactive = if self.inactive { "inactive" } else { "" };
-        let onmouseover = self.props.on_hover.reform(|_| Hovered::List);
-        let onmouseout = self.props.on_hover.reform(|_| Hovered::None);
+
+        let onmouseover = self.props.on_hover.reform(|_| Hovered::List,);
+
+        let onmouseout = self.props.on_hover.reform(|_| Hovered::None,);
+
         html! {
             <div class="list-container" onmouseout=onmouseout onmouseover=onmouseover>
                 <div class=("list", inactive)>
@@ -115,22 +138,27 @@ impl Component for List {
 }
 
 impl List {
-    fn view_header(&self) -> Html {
+    fn view_header(&self,) -> Html {
+
         html! { for self.props.children.iter().filter(|c| matches!(c.props, Variants::Header(_))) }
     }
 
-    fn view_items(&self) -> Html {
+    fn view_items(&self,) -> Html {
+
         self.props
             .children
             .iter()
-            .filter(|c| matches!(&c.props, Variants::Item(props) if !props.hide))
+            .filter(|c| matches!(&c.props, Variants::Item(props) if !props.hide),)
             .enumerate()
-            .map(|(i, mut c)| {
-                if let Variants::Item(ref mut props) = c.props {
+            .map(|(i, mut c,)| {
+
+                if let Variants::Item(ref mut props,) = c.props {
+
                     props.name = format!("#{} - {}", i + 1, props.name);
                 }
+
                 c
-            })
+            },)
             .collect::<Html>()
     }
 }
